@@ -1,0 +1,7 @@
+from pypdf import PdfReader 
+import json
+reader = PdfReader('example_short.pdf') 
+pages = reader.pages
+text = ''
+for page in pages:
+    text += page.extract_text()
