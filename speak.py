@@ -1,6 +1,14 @@
 import requests
+from pypdf import PdfReader 
 
-textToSpeak = "This is a text to be spoken using the locally running Piper TTS server process."
+reader = PdfReader('example_short.pdf') 
+pages = reader.pages
+
+textToSpeak = ""
+for page in pages:
+   textToSpeak += page.extract_text()
+print(textToSpeak)
+
 urlPiper = "http://localhost:5000"
 outputFilename = "output.wav"
 
